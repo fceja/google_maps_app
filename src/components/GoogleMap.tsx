@@ -25,23 +25,22 @@ const zoom = zoomStr ? parseInt(zoomStr) : 0;
 
 const styles = {
   width: process.env.REACT_APP_GOOGLE_MAPS_WIDTH,
-  height: process.env.REACT_APP_GOOGLE_MAPS_HEIGHT
-}
+  height: process.env.REACT_APP_GOOGLE_MAPS_HEIGHT,
+};
 
-const mapDebug = process.env.REACT_APP_GOOGLE_MAPS_HEIGHT
-const conditionalStyles = mapDebug ? { 'borderStyle': 'dashed', 'borderColor': 'red'} : {};
-const combinedStyles = { ...styles, ...conditionalStyles};
+const mapDebug = process.env.REACT_APP_GOOGLE_MAPS_DEBUG === "true";
+const conditionalStyles = mapDebug
+  ? { borderStyle: "dashed", borderColor: "red" }
+  : {};
+const combinedStyles = { ...styles, ...conditionalStyles };
 
 const GoogleMap = () => {
-  return (
-    !mapDebug ? (
-      <Wrapper apiKey={apiKey} render={render}>
-        <MyMapComponent center={center} zoom={zoom} styles={styles}/>
-      </Wrapper>
-    ) : (
-      <div style={combinedStyles}>DEBUG is true</div>
-    )
-
+  return !mapDebug ? (
+    <Wrapper apiKey={apiKey} render={render}>
+      <MyMapComponent center={center} zoom={zoom} styles={styles} />
+    </Wrapper>
+  ) : (
+    <div style={combinedStyles}>DEBUG is true</div>
   );
 };
 
