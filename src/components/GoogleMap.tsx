@@ -1,23 +1,40 @@
 import { ReactElement } from "react";
-import { Wrapper, Status} from "@googlemaps/react-wrapper";
+import { Wrapper, Status } from "@googlemaps/react-wrapper";
 
-import MyMapComponent from "./MyMapComponent"
+import MyMapComponent from "./MyMapComponent";
 
+// return loading or failure div
 const render = (status: Status): ReactElement => {
-    if (status === Status.FAILURE) return <div>This is error div</div>;
-    return <div>this is  Loading... div</div>
-}
+  if (status === Status.FAILURE) return <div>This is error div</div>;
+  return <div>this is Loading... div</div>;
+};
 
-const center = { lat: -34.397, lng: 150.644}
-const zoom = 4;
+// get api key
 const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY ?? "";
 
-const GoogleMap = () => {
-    return(
-        <Wrapper apiKey={apiKey} render={render}>
-            <MyMapComponent center={center} zoom={zoom}/>
-        </Wrapper>
-    )
+// get google map init vars
+const latStr = process.env.REACT_APP_GOOGLE_MAPS_LAT;
+const lngStr = process.env.REACT_APP_GOOGLE_MAPS_LNG;
+const center = {
+  lat: latStr ? parseFloat(latStr) : 0,
+  lng: lngStr ? parseFloat(lngStr) : 0,
+};
+
+const zoomStr = process.env.REACT_APP_GOOGLE_MAPS_ZOOM;
+const zoom = zoomStr ? parseInt(zoomStr) : 0;
+
+const styles = {
+  width: process.env.REACT_APP_GOOGLE_MAPS_WIDTH,
+  height: process.env.REACT_APP_GOOGLE_MAPS_HEIGHT
 }
+
+
+const GoogleMap = () => {
+  return (
+    <Wrapper apiKey={apiKey} render={render}>
+      <MyMapComponent center={center} zoom={zoom} styles={styles}/>
+    </Wrapper>
+  );
+};
 
 export default GoogleMap;

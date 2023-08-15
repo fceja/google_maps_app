@@ -3,9 +3,11 @@ import { useEffect, useRef } from "react";
 const MyMapComponent = ({
   center,
   zoom,
+  styles,
 }: {
   center: google.maps.LatLngLiteral;
   zoom: number;
+  styles: Object;
 }) => {
   const ref = useRef<HTMLDivElement | null>(null);
 
@@ -18,7 +20,7 @@ const MyMapComponent = ({
     }
   }, [center, zoom]);
 
-  return <div ref={ref} id="map" style={{ width: "100%", height: "400px" }} />;
+  return <div ref={ref} id="map" style={styles} />;
 };
 
 export default MyMapComponent;
