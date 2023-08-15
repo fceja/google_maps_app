@@ -1,9 +1,6 @@
-import React from "react";
+import App from './App';
 
-import App from "../components/App";
-
-const Root: React.FC = () => {
-  return <App />;
-};
-
-export default Root;
+const Root = () => {
+    return (<App /> )
+}
+export default Root
