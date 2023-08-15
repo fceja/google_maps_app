@@ -28,12 +28,20 @@ const styles = {
   height: process.env.REACT_APP_GOOGLE_MAPS_HEIGHT
 }
 
+const mapDebug = process.env.REACT_APP_GOOGLE_MAPS_HEIGHT
+const conditionalStyles = mapDebug ? { 'borderStyle': 'dashed', 'borderColor': 'red'} : {};
+const combinedStyles = { ...styles, ...conditionalStyles};
 
 const GoogleMap = () => {
   return (
-    <Wrapper apiKey={apiKey} render={render}>
-      <MyMapComponent center={center} zoom={zoom} styles={styles}/>
-    </Wrapper>
+    !mapDebug ? (
+      <Wrapper apiKey={apiKey} render={render}>
+        <MyMapComponent center={center} zoom={zoom} styles={styles}/>
+      </Wrapper>
+    ) : (
+      <div style={combinedStyles}>DEBUG is true</div>
+    )
+
   );
 };
 
