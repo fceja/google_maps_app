@@ -9,18 +9,20 @@ const MyMapComponent = ({
   zoom: number;
   styles: Object;
 }) => {
-  const ref = useRef<HTMLDivElement | null>(null);
+  // create html elem for map
+  const mapDiv = useRef<HTMLDivElement | null>(null);
 
+  // on load, create google map
   useEffect(() => {
-    if (ref.current) {
-      new window.google.maps.Map(ref.current, {
+    if (mapDiv.current) {
+      new window.google.maps.Map(mapDiv.current, {
         center,
         zoom,
       });
     }
   }, [center, zoom]);
 
-  return <div ref={ref} id="map" style={styles} />;
+  return <div ref={mapDiv} id="map" style={styles} aria-label="Google Map" />;
 };
 
 export default MyMapComponent;
