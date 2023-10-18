@@ -1,10 +1,11 @@
-import '../styles/App.css';
-
-import GoogleMap from './GoogleMap'
+import "../styles/App.css";
+import GoogleMap from "./googleMap/GoogleMap";
 
 function App() {
   return (
-    <GoogleMap />
+    <div id="app">
+      <GoogleMap />
+    </div>
   );
 }
 
