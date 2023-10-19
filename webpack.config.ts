@@ -1,8 +1,8 @@
-const CopyWebpackPlugin = require("copy-webpack-plugin");
-const Dotenv = require("dotenv-webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
-const path = require("path");
+import CopyWebpackPlugin from "copy-webpack-plugin";
+import Dotenv from "dotenv-webpack";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import path from "path";
+import TsconfigPathsPlugin from "tsconfig-paths-webpack-plugin";
 
 module.exports = {
   mode: "development",
