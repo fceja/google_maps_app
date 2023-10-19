@@ -1,4 +1,4 @@
-import "@styles/App.css";
+import "@styles/components/App.css";
 import GoogleMap from "@components/googleMap/GoogleMap";
 
 function App() {

@@ -1,12 +1,13 @@
 import { ReactElement } from "react";
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
 
+import "@styles/components/GoogleMap.css";
 import MyMapComponent from "@components/googleMap/MyMapComponent";
 
 // return loading or failure div
 const render = (status: Status): ReactElement => {
   if (status === Status.FAILURE) return <div>Error while loading...</div>;
-  return <div>Loading... div</div>;
+  return <div id="loading">Loading...</div>;
 };
 
 // api key
