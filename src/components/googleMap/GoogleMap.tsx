@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
 
-import MyMapComponent from "./MyMapComponent";
+import MyMapComponent from "@components/googleMap/MyMapComponent";
 
 // return loading or failure div
 const render = (status: Status): ReactElement => {

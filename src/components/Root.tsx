@@ -1,6 +1,6 @@
-import App from './App';
+import App from "@components/App";
 
 const Root = () => {
-    return (<App /> )
-}
-export default Root
+  return <App />;
+};
+export default Root;
