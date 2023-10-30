@@ -1,5 +1,4 @@
 import AxiosClient from "@utils/AxiosClient";
-
 import { FormDataType } from "@appTypes/index";
 
 const apiClient = AxiosClient({

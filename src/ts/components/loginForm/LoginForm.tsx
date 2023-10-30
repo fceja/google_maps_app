@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 
 import "@scss/components/loginForm/LoginForm.scss";
 import { authUser } from "@api/googleMaps/GoogleMapsApi";
-import SecretComponent from "@components/secretComponent/SecretComponent";
+import GoogleMap from "../googleMap/GoogleMap";
 
 const LoginForm = () => {
   const [isAuthd, setIsAuthd] = useState(false);
@@ -71,7 +71,7 @@ const LoginForm = () => {
         />
       </Col>{" "}
       <Col className="m-5 p-5">
-        <Button variant="primary" type="submit" className="m-3">
+        <Button variant="primary" type="submit" className="m-3 form-submit">
           Submit
         </Button>
       </Col>
@@ -80,7 +80,7 @@ const LoginForm = () => {
 
   return (
     <>
-      {isAuthd ? <SecretComponent /> : myForm}
+      {!isAuthd ? myForm : <GoogleMap />}
       {isSubmitted && !isAuthd && loginFailedDiv()}
     </>
   );
