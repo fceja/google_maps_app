@@ -4,11 +4,12 @@
   "private": true,
   "dependencies": {
     "@googlemaps/react-wrapper": "^1.1.35",
-    "customize-cra": "^1.0.0",
+    "axios": "^1.6.0",
     "react": "^18.2.0",
-    "react-app-rewired": "^2.2.1",
+    "react-bootstrap": "^2.9.1",
     "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1"
+    "react-scripts": "5.0.1",
+    "sass": "^1.69.5"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
@@ -19,8 +20,10 @@
     "@types/react-dom": "^18.2.13",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.1",
+    "customize-cra": "^1.0.0",
     "dotenv-webpack": "^8.0.1",
     "html-webpack-plugin": "^5.5.3",
+    "sass-loader": "^13.3.2",
     "style-loader": "^3.3.3",
     "ts-loader": "^9.5.0",
     "tsconfig-paths-webpack-plugin": "^4.1.0",
@@ -29,10 +32,8 @@
     "webpack-cli": "^5.1.4"
   },
   "scripts": {
-    "start": "react-app-rewired start",
-    "start-webpack": "webpack --mode development",
-    "start-webpack-serve": "webpack serve --mode development",
-    "build": "react-scripts build",
+    "start": "webpack serve --mode development",
+    "build": "webpack --mode production",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
