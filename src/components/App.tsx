@@ -1,10 +1,10 @@
 import "@styles/components/App.css";
-import GoogleMap from "@components/googleMap/GoogleMap";
+import LoginForm from "@components/loginForm/LoginForm";
 
 function App() {
   return (
     <div id="app">
-      <GoogleMap />
+      <LoginForm />
     </div>
   );
 }
