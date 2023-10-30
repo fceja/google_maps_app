@@ -6,7 +6,7 @@ import TsconfigPathsPlugin from "tsconfig-paths-webpack-plugin";
 
 module.exports = {
   mode: "development",
-  entry: "./src/index.tsx",
+  entry: "./src/ts/index.tsx",
   // set bundle output
   output: {
     filename: "bundle.js",

@@ -18,11 +18,10 @@
     "outDir": "./dist",
     "paths": {
       "@/*": ["./src/*"],
-      "@api/*": ["./src/api/*"],
+      "@api/*": ["src/ts/api/*"],
       "@appTypes/*": ["./src/ts/types/*"],
-      "@components/*": ["./src/components/*"],
+      "@components/*": ["src/ts/components/*"],
       "@scss/*": ["./src/scss/*"],
-      "@styles/*": ["./src/styles/*"],
       "@utils/*": ["./src/ts/utils/*"]
     },
     "resolveJsonModule": true,
