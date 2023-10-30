@@ -1,0 +1,15 @@
+button {
+  margin: 5px;
+  min-height: 50px;
+  min-width: 100px;
+}
+
+div.input-email,
+div.input-pass {
+  margin-bottom: 10px;
+}
+
+div.failed-login {
+  margin-top: 10px;
+  color: red;
+}
