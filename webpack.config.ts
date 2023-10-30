@@ -4,13 +4,15 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import path from "path";
 import TsconfigPathsPlugin from "tsconfig-paths-webpack-plugin";
 
+const projectRoot = "./";
+
 module.exports = {
   mode: "development",
-  entry: "./src/ts/index.tsx",
+  entry: `${projectRoot}/src/ts/index.tsx`,
   // set bundle output
   output: {
     filename: "bundle.js",
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, `${projectRoot}/dist`),
     publicPath: "/",
   },
   // set dev settings
@@ -47,7 +49,7 @@ module.exports = {
   plugins: [
     // set env vars
     new Dotenv({
-      path: "./.env.local",
+      path: "./.env",
     }),
 
     // set html index
