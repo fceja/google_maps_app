@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 
 import "@scss/components/loginForm/LoginForm.scss";
 import { authUser } from "@api/googleMaps/GoogleMapsApi";
-import GoogleMap from "../googleMap/GoogleMap";
+import GoogleMap from "@components/googleMap/GoogleMap";
 
 const LoginForm = () => {
   const [isAuthd, setIsAuthd] = useState(false);
