@@ -1,11 +1,16 @@
 import "@scss/components/App.scss";
+import { AuthProvider } from "@context/AuthContext";
 import LoginForm from "@components/loginForm/LoginForm";
+import Secret from "./Secret";
 
-const App = () => {
+const App: React.FC = () => {
   return (
-    <div id="app" className="app">
-      <LoginForm />
-    </div>
+    <AuthProvider>
+      <div className="app">
+        <LoginForm />
+        <Secret />
+      </div>
+    </AuthProvider>
   );
 };
 

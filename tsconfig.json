@@ -21,6 +21,7 @@
       "@api/*": ["src/ts/api/*"],
       "@appTypes/*": ["./src/ts/types/*"],
       "@components/*": ["src/ts/components/*"],
+      "@context/*": ["src/ts/context/*"],
       "@scss/*": ["./src/scss/*"],
       "@utils/*": ["./src/ts/utils/*"]
     },

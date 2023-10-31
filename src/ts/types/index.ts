@@ -1,3 +1,10 @@
+import { ReactNode } from "react";
+
+// types
+export type AuthProviderTypeProps = {
+  children: ReactNode;
+};
+
 export type AxiosClientType = {
   baseUrl: string;
   timeout: number;
@@ -8,3 +15,9 @@ export type FormDataType = {
   email: string;
   password: string;
 };
+
+//interfaces
+export interface AuthContextInterface {
+  isAuthenticated: boolean;
+  validateCreds: (formData: FormDataType) => Promise<void>;
+}
