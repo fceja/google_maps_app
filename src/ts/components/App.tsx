@@ -1,12 +1,17 @@
 import "@scss/components/App.scss";
+import { AuthProvider } from "@context/AuthContext";
 import LoginForm from "@components/loginForm/LoginForm";
+import GoogleMap from "./googleMap/GoogleMap";
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div id="app" className="app">
-      <LoginForm />
-    </div>
+    <AuthProvider>
+      <div className="app">
+        <LoginForm />
+        <GoogleMap />
+      </div>
+    </AuthProvider>
   );
-}
+};
 
 export default App;
