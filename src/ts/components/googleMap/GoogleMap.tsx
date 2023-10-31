@@ -3,6 +3,7 @@ import { Wrapper, Status } from "@googlemaps/react-wrapper";
 
 import "@scss/components/GoogleMaps/GoogleMap.scss";
 import MyMapComponent from "@components/googleMap/MyMapComponent";
+import { useAuth } from "@context/AuthContext";
 
 // return loading or failure div
 const render = (status: Status): ReactElement => {
@@ -21,21 +22,21 @@ const mapCenter = {
   lng: lngStr ? parseFloat(lngStr) : 0,
 };
 
-// set map zoom
-const zoomStr = process.env.REACT_APP_GOOGLE_MAPS_ZOOM;
-const mapZoom = zoomStr ? parseInt(zoomStr) : 0;
-
 // set map height and width
-const mapStyles = {
-  width: process.env.REACT_APP_GOOGLE_MAPS_WIDTH,
-  height: process.env.REACT_APP_GOOGLE_MAPS_HEIGHT,
-};
-
-const GoogleMap = () => {
+const GoogleMap: React.FC = () => {
+  const { isAuthenticated } = useAuth();
   return (
-    <Wrapper apiKey={apiKey} render={render}>
-      <MyMapComponent center={mapCenter} zoom={mapZoom} styles={mapStyles} />
-    </Wrapper>
+    <>
+      {isAuthenticated && (
+        <Wrapper apiKey={apiKey} render={render}>
+          <MyMapComponent
+            center={mapCenter}
+            zoom={9}
+            styles={{ width: "100%", height: "60vh" }}
+          />
+        </Wrapper>
+      )}
+    </>
   );
 };
 
