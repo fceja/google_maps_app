@@ -20,5 +20,7 @@ export type PayloadType = FormDataType;
 //interfaces
 export interface AuthContextInterface {
   isAuthenticated: boolean;
+  isLoggingIn: boolean;
+  isSubmitted: boolean;
   validateCreds: (formData: FormDataType) => Promise<void>;
 }

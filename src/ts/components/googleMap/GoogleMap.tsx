@@ -7,8 +7,8 @@ import { useAuth } from "@context/AuthContext";
 
 // return loading or failure div
 const render = (status: Status): ReactElement => {
-  if (status === Status.FAILURE) return <div>Error while loading...</div>;
-  return <div id="loading">Loading...</div>;
+  if (status === Status.FAILURE) return <div>Error loading map.</div>;
+  return <div id="loading">...loading map</div>;
 };
 
 // api key

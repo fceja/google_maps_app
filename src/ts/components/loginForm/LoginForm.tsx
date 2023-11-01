@@ -7,7 +7,8 @@ import "@scss/components/loginForm/LoginForm.scss";
 import { useAuth } from "@context/AuthContext";
 
 const LoginForm: React.FC = () => {
-  const { isAuthenticated, validateCreds } = useAuth();
+  const { isAuthenticated, isLoggingIn, isSubmitted, validateCreds } =
+    useAuth();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -65,6 +66,12 @@ const LoginForm: React.FC = () => {
             </Form>
           }
         </div>
+      )}
+      {isSubmitted && isLoggingIn && (
+        <div className="div-logging-in">...logging in</div>
+      )}
+      {isSubmitted && !isLoggingIn && !isAuthenticated && (
+        <div className="div-failed-login">...failed log in</div>
       )}
     </>
   );
