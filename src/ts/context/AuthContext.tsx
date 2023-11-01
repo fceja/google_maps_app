@@ -1,9 +1,10 @@
+import { createContext, useContext, useState, FC } from "react";
+
 import {
   AuthContextInterface,
   AuthProviderTypeProps,
-  FormDataType,
-} from "../types";
-import { createContext, useContext, useState, FC } from "react";
+  PayloadType,
+} from "@appTypes/index";
 import { authUser } from "@api/googleMaps/GoogleMapsApi";
 
 const AuthContext = createContext<AuthContextInterface | undefined>(undefined);
@@ -11,8 +12,8 @@ const AuthContext = createContext<AuthContextInterface | undefined>(undefined);
 export const AuthProvider: FC<AuthProviderTypeProps> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const validateCreds = async (formData: FormDataType): Promise<void> => {
-    const isAuthd = await authUser(formData);
+  const validateCreds = async (payloadData: PayloadType): Promise<void> => {
+    const isAuthd = await authUser(payloadData);
     if (isAuthd) {
       setIsAuthenticated(true);
     } else {

@@ -1,5 +1,5 @@
 import AxiosClient from "@utils/AxiosClient";
-import { FormDataType } from "@appTypes/index";
+import { PayloadType } from "@appTypes/index";
 
 const apiClient = AxiosClient({
   baseUrl: `${process.env.REACT_APP_USER_AUTH_API_URL}`,
@@ -10,13 +10,12 @@ const apiClient = AxiosClient({
   },
 });
 
-export const authUser = async (formData: FormDataType): Promise<boolean> => {
+export const authUser = async (payload: PayloadType): Promise<boolean> => {
   try {
     const response = await apiClient.post("/auth/googleMaps", {
-      email: formData.email,
-      password: formData.password,
+      email: payload.email,
+      password: payload.password,
     });
-
     return response.headers["app-auth"];
   } catch (error) {
     return false;

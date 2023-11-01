@@ -15,6 +15,7 @@ export type FormDataType = {
   email: string;
   password: string;
 };
+export type PayloadType = FormDataType;
 
 //interfaces
 export interface AuthContextInterface {
