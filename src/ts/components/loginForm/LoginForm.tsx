@@ -67,10 +67,12 @@ const LoginForm: React.FC = () => {
         </Form>
       )}
       {isSubmitted && isLoggingIn && (
-        <div className="div-logging-in">...logging in</div>
+        <div className="div-logging-in mt-1 text-center">...logging in</div>
       )}
       {isSubmitted && !isLoggingIn && !isAuthenticated && (
-        <div className="div-failed-login">...failed log in</div>
+        <div className="div-failed-login mt-1 text-center text-danger">
+          ...failed log in
+        </div>
       )}
     </div>
   );
