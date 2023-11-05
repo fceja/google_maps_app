@@ -12,7 +12,7 @@ const apiClient = AxiosClient({
 
 export const authUser = async (payload: PayloadType): Promise<boolean> => {
   try {
-    const response = await apiClient.post("/auth/googleMaps", {
+    const response = await apiClient.post("/user/auth/googleMaps", {
       email: payload.email,
       password: payload.password,
     });
