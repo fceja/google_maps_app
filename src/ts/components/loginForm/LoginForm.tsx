@@ -28,7 +28,7 @@ const LoginForm: React.FC = () => {
 
   return (
     <>
-      <p>Google Map App</p>
+      <p>Google Maps App</p>
       <div className="form-container">
         {!isAuthenticated && (
           <Form onSubmit={handleSubmit} className="rounded-4 p-4 fw-medium">
