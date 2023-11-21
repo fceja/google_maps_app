@@ -61,7 +61,7 @@ const LoginForm: React.FC = () => {
               type="submit"
               className="button-styles m-3 pl-2 pr-2 fs-5 fw-bold rounded-3"
             >
-              Submit
+              Login
             </Button>
           </Col>
         </Form>
