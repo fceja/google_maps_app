@@ -1,15 +1,18 @@
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+
 import "@scss/components/App.scss";
 import { AuthProvider } from "@context/AuthContext";
-import LoginForm from "@components/loginForm/LoginForm";
-import GoogleMap from "./googleMap/GoogleMap";
+import MainPage from "@pages/MainPage";
 
 const App: React.FC = () => {
   return (
     <AuthProvider>
-      <div className="app">
-        <LoginForm />
-        <GoogleMap />
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/*" element={<Navigate to="/" />} />
+          <Route path="/" element={<MainPage />} />
+        </Routes>
+      </BrowserRouter>
     </AuthProvider>
   );
 };
