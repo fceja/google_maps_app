@@ -1,18 +1,17 @@
 @import "@scss/Variables.scss";
 
 .main-form-container {
+  width: 50%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .form-container {
   padding: 25px 45px 25px 45px;
   display: flex;
   flex-direction: column;
-  background-color: $form-background-color;
   border-radius: 5px;
+  height: inherit;
+  width: 100%;
 }
 
 .app-title {

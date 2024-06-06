@@ -4,7 +4,7 @@ import LoginInfoPanel from "@components/LoginInfoPanel";
 
 const Login = () => {
     return (
-        <div className="login-div">
+        <div className="login-div d-flex align-items-center justify-content-center">
             <LoginInfoPanel />
             <LoginForm />
         </div>

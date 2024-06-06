@@ -3,6 +3,7 @@ const LoginInfoPanel = () => {
     return (
         <div className="login-info-panel">
             This is Login Info Panel
-        </div>)
+        </div>
+    )
 }
 export default LoginInfoPanel
