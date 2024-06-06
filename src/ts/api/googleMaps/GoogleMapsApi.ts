@@ -1,5 +1,5 @@
 import AxiosClient from "@utils/AxiosClient";
-import { PayloadType } from "@appTypes/index";
+import { FormPayloadT } from "@components/loginForm/LoginForm"
 
 const apiClient = AxiosClient({
   baseUrl: `${process.env.REACT_APP_USER_AUTH_API_URL}`,
@@ -12,7 +12,7 @@ const apiClient = AxiosClient({
   },
 });
 
-export const authUser = async (payload: PayloadType): Promise<boolean> => {
+export const authUser = async (payload: FormPayloadT): Promise<boolean> => {
   try {
     const response = await apiClient.post("/user/auth/googleMaps", {
       email: payload.email,

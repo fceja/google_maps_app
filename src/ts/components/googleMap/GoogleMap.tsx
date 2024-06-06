@@ -24,7 +24,7 @@ const mapCenter = {
 
 // set map height and width
 const GoogleMap: React.FC = () => {
-  const { isAuthenticated } = useAuth();
+  const { isAuthd: isAuthenticated } = useAuth();
   return (
     <>
       {isAuthenticated && (

@@ -1,6 +1,7 @@
 #map {
   margin-top: 5%;
   min-height: 500px;
+  position: absolute;
 }
 #loading {
   color: rgb(193, 191, 191);
@@ -9,4 +10,9 @@
   align-items: center;
   margin-left: auto;
   margin-right: auto;
+}
+
+button {
+  position: relative;
+  z-index: 30;
 }

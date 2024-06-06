@@ -6,10 +6,15 @@ import Form from "react-bootstrap/Form";
 import "@scss/components/loginForm/LoginForm.scss";
 import { useAuth } from "@context/AuthContext";
 
+export type FormPayloadT = {
+  email: string;
+  password: string;
+};
+
 const LoginForm: React.FC = () => {
-  const { isAuthenticated, isLoggingIn, isSubmitted, validateCreds } =
+  const { isAuthd, isAuthTriggered, isAuthProcessing, performAuth } =
     useAuth();
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormPayloadT>({
     email: "",
     password: "",
   });
@@ -23,14 +28,14 @@ const LoginForm: React.FC = () => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    validateCreds(formData);
+    performAuth(formData);
   };
 
   return (
     <>
       <p>Google Maps App</p>
       <div className="form-container">
-        {!isAuthenticated && (
+        {!isAuthd && (
           <Form onSubmit={handleSubmit} className="rounded-4 p-4 fw-medium">
             <Col className="label-email fw-bold">
               <Form.Label>Email</Form.Label>
@@ -68,10 +73,10 @@ const LoginForm: React.FC = () => {
             </Col>
           </Form>
         )}
-        {isSubmitted && isLoggingIn && (
+        {isAuthProcessing && isAuthTriggered && (
           <div className="div-logging-in mt-1 text-center">...logging in</div>
         )}
-        {isSubmitted && !isLoggingIn && !isAuthenticated && (
+        {isAuthProcessing && !isAuthTriggered && !isAuthd && (
           <div className="div-failed-login mt-1 text-center text-danger">
             ...failed log in
           </div>

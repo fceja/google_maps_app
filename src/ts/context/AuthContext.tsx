@@ -1,36 +1,41 @@
-import { createContext, useContext, useState, FC } from "react";
+import { createContext, FC, ReactNode, useContext, useState } from "react";
 
-import {
-  AuthContextInterface,
-  AuthProviderTypeProps,
-  PayloadType,
-} from "@appTypes/index";
+import { FormPayloadT } from "@components/loginForm/LoginForm"
 import { authUser } from "@api/googleMaps/GoogleMapsApi";
+
+type AuthProviderTypeProps = {
+  children: ReactNode;
+};
+
+interface AuthContextInterface {
+  isAuthd: boolean;
+  isAuthTriggered: boolean;
+  isAuthProcessing: boolean;
+  performAuth: (formData: FormPayloadT) => Promise<void>;
+}
 
 const AuthContext = createContext<AuthContextInterface | undefined>(undefined);
 
 export const AuthProvider: FC<AuthProviderTypeProps> = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isLoggingIn, setIsLoggingIn] = useState(false);
+  const [isAuthd, setIsAuthd] = useState(false);
+  const [isAuthTriggered, setIsAuthTriggered] = useState(false);
+  const [isAuthProcessing, setIsAuthProccessing] = useState(false);
 
-  const validateCreds = async (payloadData: PayloadType): Promise<void> => {
-    setIsSubmitted(true);
-    setIsLoggingIn(true);
+  const performAuth = async (payloadData: FormPayloadT): Promise<void> => {
+    setIsAuthTriggered(true);
+    setIsAuthProccessing(true);
 
     const isAuthd = await authUser(payloadData);
     if (isAuthd) {
-      setIsAuthenticated(true);
+      setIsAuthd(true);
     } else {
-      setIsAuthenticated(false);
+      setIsAuthd(false);
     }
-    setIsLoggingIn(false);
+    setIsAuthProccessing(false);
   };
 
   return (
-    <AuthContext.Provider
-      value={{ isAuthenticated, isLoggingIn, isSubmitted, validateCreds }}
-    >
+    <AuthContext.Provider value={{ isAuthd, isAuthTriggered, isAuthProcessing, performAuth }}>
       {children}
     </AuthContext.Provider>
   );
