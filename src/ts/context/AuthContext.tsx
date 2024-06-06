@@ -1,6 +1,6 @@
 import { createContext, FC, ReactNode, useContext, useState } from "react";
 
-import { FormPayloadT } from "@components/loginForm/LoginForm"
+import { FormPayloadT } from "@/ts/components/LoginForm"
 import { authUser } from "@api/googleMaps/GoogleMapsApi";
 
 type AuthProviderTypeProps = {

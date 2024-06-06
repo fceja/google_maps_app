@@ -1,5 +1,5 @@
 import AxiosClient from "@utils/AxiosClient";
-import { FormPayloadT } from "@components/loginForm/LoginForm"
+import { FormPayloadT } from "@/ts/components/LoginForm"
 
 const apiClient = AxiosClient({
   baseUrl: `${process.env.REACT_APP_USER_AUTH_API_URL}`,
