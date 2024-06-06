@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
 
-import "@scss/components/GoogleMaps/GoogleMap.scss";
+import "@scss/components/GoogleMap.scss";
 import MyMapComponent from "@components/googleMap/MyMapComponent";
 import { useAuth } from "@context/AuthContext";
 

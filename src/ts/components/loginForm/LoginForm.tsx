@@ -1,9 +1,6 @@
-import Button from "react-bootstrap/Button";
-import { ChangeEvent, FormEvent, useState } from "react";
-import Col from "react-bootstrap/Col";
-import Form from "react-bootstrap/Form";
+import { ChangeEvent, useState } from "react";
 
-import "@scss/components/loginForm/LoginForm.scss";
+import "@scss/components/LoginForm.scss";
 import { useAuth } from "@context/AuthContext";
 
 export type FormPayloadT = {
@@ -11,13 +8,34 @@ export type FormPayloadT = {
   password: string;
 };
 
-const LoginForm: React.FC = () => {
-  const { isAuthd, isAuthTriggered, isAuthProcessing, performAuth } =
-    useAuth();
+const LoginForm = () => {
   const [formData, setFormData] = useState<FormPayloadT>({
     email: "",
     password: "",
   });
+  const { isAuthd, isAuthProcessing, isAuthTriggered, performAuth } = useAuth();
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const [isFormDataValid, setIsFormDataValid] = useState(false);
+  const [isMissingVisible, setMissingVisible] = useState(false);
+
+  const handleHoverEnter = () => {
+    const isEmailValid = /^[^@\s]+@[^@\s]+\.(com|org|net|edu|gov)$/.test(formData.email);
+
+    if (isEmailValid && formData.password.length > 0) {
+      setMissingVisible(false)
+      setIsFormDataValid(true)
+      setIsButtonDisabled(false);
+
+    } else {
+      setMissingVisible(true)
+      setIsFormDataValid(false)
+      setIsButtonDisabled(true);
+    }
+
+  }
+  const handleHoverLeave = () => {
+    setMissingVisible(false)
+  }
 
   const handleInputChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -26,63 +44,63 @@ const LoginForm: React.FC = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     performAuth(formData);
   };
 
   return (
-    <>
-      <p>Google Maps App</p>
-      <div className="form-container">
-        {!isAuthd && (
-          <Form onSubmit={handleSubmit} className="rounded-4 p-4 fw-medium">
-            <Col className="label-email fw-bold">
-              <Form.Label>Email</Form.Label>
-            </Col>
-            <Col className="input-email mb-3">
-              <Form.Control
-                type="email"
-                name="email"
-                placeholder="email"
-                onChange={handleInputChange}
-                className="rounded-3 lh-lg"
-              />
-            </Col>
-            <Col className="label-pass mt-3 fw-bold">
-              <Form.Label>Password</Form.Label>
-            </Col>
-            <Col className="input-pass mb-3">
-              <Form.Control
-                type="password"
-                name="password"
-                placeholder="password"
-                onChange={handleInputChange}
-                className="rounded-3 lh-lg"
-              />
-            </Col>
-            <Col className="btn-div text-center">
-              <Button
-                role="button"
-                variant="primary"
-                type="submit"
-                className="button-styles m-3 pl-2 pr-2 fs-5 fw-bold rounded-3"
-              >
-                Login
-              </Button>
-            </Col>
-          </Form>
-        )}
-        {isAuthProcessing && isAuthTriggered && (
-          <div className="div-logging-in mt-1 text-center">...logging in</div>
-        )}
-        {isAuthProcessing && !isAuthTriggered && !isAuthd && (
-          <div className="div-failed-login mt-1 text-center text-danger">
-            ...failed log in
-          </div>
-        )}
-      </div>
-    </>
+    <div className="main-form-container d-flex flex-column">
+      <form
+        onSubmit={handleSubmit}
+        className="form-container"
+      >
+        <span className="app-title pt-3">Google Maps App</span>
+        <span className="greeting pb-3"> Enter credentials to login.</span>
+        <hr></hr>
+        <label className="label-email mt-3 mb-1">Email</label>
+        <input
+          className="input-email-form py-1"
+          name="email"
+          onChange={handleInputChange}
+          placeholder="email"
+          required
+          type="email"
+        />
+        <label className="label-pass mt-3 mb-1">Password</label>
+        <input
+          type="password"
+          name="password"
+          placeholder="password"
+          onChange={handleInputChange}
+          className="input-pass-form py-1"
+          required
+        />
+        <div
+          className=" mt-4"
+          onMouseEnter={handleHoverEnter}
+          onMouseLeave={handleHoverLeave}
+        >
+          <button
+            type="submit"
+            className={`button-styles w-100 ${isFormDataValid ? "btn-valid" : "btn-invalid"}`}
+            disabled={isButtonDisabled}
+          >
+            Login
+          </button>
+        </div>
+        <div
+          className="missing-fields mt-1"
+          style={{ visibility: `${isMissingVisible ? 'visible' : 'hidden'}` }}>...missing or invalid fields
+        </div>
+      </form>
+      {isAuthTriggered && isAuthProcessing && (
+        <div className="div-logging-in mt-1r">...logging in</div>
+      )}
+      {isAuthTriggered && !isAuthProcessing && !isAuthd && (
+        <div className="div-failed-login mt-1">...failed login attempt</div>
+      )}
+    </div >
   );
 };
 
