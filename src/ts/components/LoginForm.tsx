@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 
 import "@scss/components/LoginForm.scss";
 import { useAuth } from "@context/AuthContext";
@@ -19,20 +19,27 @@ const LoginForm = () => {
   const [isMissingVisible, setMissingVisible] = useState(false);
 
   const handleHoverEnter = () => {
-    const isEmailValid = /^[^@\s]+@[^@\s]+\.(com|org|net|edu|gov)$/.test(formData.email);
-
-    if (isEmailValid && formData.password.length > 0) {
+    if (isFormDataValid) {
       setMissingVisible(false)
-      setIsFormDataValid(true)
       setIsButtonDisabled(false);
 
     } else {
       setMissingVisible(true)
-      setIsFormDataValid(false)
       setIsButtonDisabled(true);
     }
-
   }
+
+  useEffect(() => {
+    const isEmailValid = /^[^@\s]+@[^@\s]+\.(com|org|net|edu|gov)$/.test(formData.email);
+    if (isEmailValid && formData.password.length > 0) {
+      setIsFormDataValid(true)
+    }
+    else {
+      setIsFormDataValid(false)
+    }
+
+  }, [formData])
+
   const handleHoverLeave = () => {
     setMissingVisible(false)
   }
