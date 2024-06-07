@@ -1,4 +1,14 @@
-.login-div {
-    height: 600px;
-    width: 1000px;
+@import "@scss/Variables.scss";
+
+.login-container {
+    margin: 0 20px;
+    position: relative;
+}
+
+@media (min-width: $breakpoint-lg) {
+    .login-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }

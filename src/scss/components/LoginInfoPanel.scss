@@ -1,22 +1,54 @@
 @import "@scss/Variables.scss";
 
-.login-info-panel {
+$parent-height: 500px;
+$parent-width: 400px;
+
+.info-panel-container {
+    height: $parent-height;
+    width: $parent-width;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    background-color: rgba(164, 164, 164, 0.183);
     border-color: rgba(94, 99, 104, 0.385);
     border-radius: 10px 0 0 10px;
     border-right: none;
-    display: flex;
-    height: inherit;
-    justify-content: center;
-    width: 50%;
 }
 
 .img-container {
-    align-items: center;
-    background-color: rgb(255, 255, 255);
+    height: calc(100% - 20px);
+    width: calc(100% - 20px);
     display: flex;
-    height: 90%;
+    align-items: center;
     justify-content: center;
-    width: 90%;
+}
+
+.img {
+    width: 100%;
+}
+
+/* lg and greater*/
+@media (min-width: calc(#{$breakpoint-lg})) {
+    .info-panel-container {
+        background-color: rgba(164, 164, 164, 0.183);
+    }
+
+    .img-container {
+        background-color: rgb(255, 255, 255);
+
+    }
+}
+
+/* zero upto lg */
+@media (max-width: calc(#{$breakpoint-lg} - 1px)) {
+    $parent-height: 212.5px;
+    $parent-width: 170px;
+
+    .info-panel-container {
+        max-height: 120px;
+    }
+
+    .img {
+        width: auto;
+        height: 100%;
+    }
 }

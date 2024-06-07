@@ -1,27 +1,27 @@
 @import "@scss/Variables.scss";
 
-.main-form-container {
+$parent-height: 500px;
+$parent-width: 400px;
+
+.form-container {
+  height: $parent-height;
+  width: $parent-width;
+  display: flex;
+  justify-content: center;
   align-items: center;
   border-style: solid;
   border-color: rgba(94, 99, 104, 0.113);
-  border-radius: 0 10px 10px 0;
-  border-left: none;
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  width: 50%;
+  border-radius: 10px 10px 10px 10px;
 }
 
-.form-container {
+form {
+  height: calc(100% - 20px);
+  width: calc(100% - 20px);
+  display: flex;
+  flex-direction: column;
   border-color: rgba(94, 99, 104, 0.263);
   border-style: solid;
   border-width: .7px;
-  display: flex;
-  flex-direction: column;
-  height: 90%;
-  justify-content: center;
-  padding: 25px 45px 25px 45px;
-  width: 90%;
 }
 
 .greeting {
@@ -30,6 +30,7 @@
   font-weight: 400;
   letter-spacing: -.2px;
   text-align: center;
+  margin: 20px 0 0 0;
 }
 
 .label-email,
@@ -56,7 +57,7 @@ hr {
 }
 
 .btn-div {
-  margin: 70px 0 0 0;
+  margin: 40px 0 0 0;
 }
 
 .button-styles {
@@ -71,6 +72,13 @@ hr {
   padding: 8px 0 8px 0;
   transition: transform 0.2s;
 }
+
+// .btn-valid {
+//   border-color: rgba(19, 115, 233, 0.749);
+//   border-style: solid;
+//   color: rgba(19, 115, 233, 0.749);
+//   font-weight: 600;
+// }
 
 .btn-valid:hover {
   border-color: rgba(19, 115, 233, 0.749);

@@ -50,31 +50,28 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="main-form-container d-flex flex-column">
-      <form
-        onSubmit={handleSubmit}
-        className="form-container"
-      >
-        <span className="greeting pb-3">Please enter credentials to login.</span>
+    <div className="form-container d-flex flex-column">
+      <form onSubmit={handleSubmit}>
+        <span className="greeting p-3">Please enter credentials to login.</span>
         <hr></hr>
-        <label className="label-email mt-3 mb-1">Email</label>
+        <label className="label-email mt-3 mb-1 mx-3">Email</label>
         <input
-          className="input-email-form py-1"
+          className="input-email-form py-1 mx-3"
           name="email"
           onChange={handleInputChange}
           required
           type="email"
         />
-        <label className="label-pass mt-3 mb-1">Password</label>
+        <label className="label-pass mt-3 mx-3">Password</label>
         <input
           type="password"
           name="password"
           onChange={handleInputChange}
-          className="input-pass-form py-1"
+          className="input-pass-form py-1 mx-3"
           required
         />
         <div
-          className="btn-div"
+          className="btn-div mx-3"
           onMouseEnter={handleHoverEnter}
           onMouseLeave={handleHoverLeave}
         >
@@ -90,11 +87,8 @@ const LoginForm = () => {
           className="missing-fields mt-1"
           style={{ visibility: `${isMissingVisible ? 'visible' : 'hidden'}` }}>...missing or invalid fields
         </div>
-        {isAuthTriggered && isAuthProcessing && (
-          <div className="div-logging-in mt-1r">...logging in</div>
-        )}
         {isAuthTriggered && !isAuthProcessing && !isAuthd && (
-          <div className="div-failed-login mt-1">...failed login attempt</div>
+          <div className="div-failed-login">...failed login attempt</div>
         )}
       </form>
     </div >

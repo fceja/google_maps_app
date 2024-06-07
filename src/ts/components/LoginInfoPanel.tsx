@@ -3,16 +3,14 @@ import googleMapsLogo from "@assets/google-maps-logo.png";
 
 const LoginInfoPanel = () => {
     return (
-        <div className="login-info-panel">
+        <div className="info-panel-container">
             <div
-                className="img-container mt-2 mt-md-0"
-                style={{ minWidth: "125px" }}
+                className="img-container"
             >
                 < img
                     className="img"
                     src={googleMapsLogo}
                     alt="google-maps-logo"
-                    style={{ width: "250px" }}
                 />
             </div>
         </div>
