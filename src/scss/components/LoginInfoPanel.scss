@@ -1,4 +1,22 @@
+@import "@scss/Variables.scss";
+
 .login-info-panel {
+    align-items: center;
+    background-color: rgba(164, 164, 164, 0.183);
+    border-color: rgba(94, 99, 104, 0.385);
+    border-radius: 10px 0 0 10px;
+    border-right: none;
+    display: flex;
     height: inherit;
+    justify-content: center;
     width: 50%;
+}
+
+.img-container {
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    height: 90%;
+    justify-content: center;
+    width: 90%;
 }

@@ -27,6 +27,9 @@
       "@api/*": [
         "src/ts/api/*"
       ],
+      "@assets/*": [
+        "src/assets/*"
+      ],
       "@appTypes/*": [
         "./src/ts/types/*"
       ],
@@ -52,5 +55,5 @@
     "strict": true,
     "strictNullChecks": true,
     "target": "ES6"
-  }
+  },
 }

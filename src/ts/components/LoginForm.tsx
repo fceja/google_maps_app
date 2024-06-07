@@ -55,15 +55,13 @@ const LoginForm = () => {
         onSubmit={handleSubmit}
         className="form-container"
       >
-        <span className="app-title pt-3">Google Maps App</span>
-        <span className="greeting pb-3"> Enter credentials to login.</span>
+        <span className="greeting pb-3">Please enter credentials to login.</span>
         <hr></hr>
         <label className="label-email mt-3 mb-1">Email</label>
         <input
           className="input-email-form py-1"
           name="email"
           onChange={handleInputChange}
-          placeholder="email"
           required
           type="email"
         />
@@ -71,13 +69,12 @@ const LoginForm = () => {
         <input
           type="password"
           name="password"
-          placeholder="password"
           onChange={handleInputChange}
           className="input-pass-form py-1"
           required
         />
         <div
-          className=" mt-4"
+          className="btn-div"
           onMouseEnter={handleHoverEnter}
           onMouseLeave={handleHoverLeave}
         >
@@ -93,13 +90,13 @@ const LoginForm = () => {
           className="missing-fields mt-1"
           style={{ visibility: `${isMissingVisible ? 'visible' : 'hidden'}` }}>...missing or invalid fields
         </div>
+        {isAuthTriggered && isAuthProcessing && (
+          <div className="div-logging-in mt-1r">...logging in</div>
+        )}
+        {isAuthTriggered && !isAuthProcessing && !isAuthd && (
+          <div className="div-failed-login mt-1">...failed login attempt</div>
+        )}
       </form>
-      {isAuthTriggered && isAuthProcessing && (
-        <div className="div-logging-in mt-1r">...logging in</div>
-      )}
-      {isAuthTriggered && !isAuthProcessing && !isAuthd && (
-        <div className="div-failed-login mt-1">...failed login attempt</div>
-      )}
     </div >
   );
 };
