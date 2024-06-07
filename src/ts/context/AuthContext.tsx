@@ -26,11 +26,8 @@ export const AuthProvider: FC<AuthProviderTypeProps> = ({ children }) => {
     setIsAuthProccessing(true);
 
     const isAuthd = await authUser(payloadData);
-    if (isAuthd) {
-      setIsAuthd(true);
-    } else {
-      setIsAuthd(false);
-    }
+    isAuthd ? setIsAuthd(true) : setIsAuthd(false);
+
     setIsAuthProccessing(false);
   };
 
