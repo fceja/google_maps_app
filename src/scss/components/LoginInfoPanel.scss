@@ -1,8 +1,5 @@
 @import "@scss/Variables.scss";
 
-$parent-height: 500px;
-$parent-width: 400px;
-
 .info-panel-container {
     height: $parent-height;
     width: $parent-width;
@@ -10,8 +7,7 @@ $parent-width: 400px;
     justify-content: center;
     align-items: center;
     border-color: rgba(94, 99, 104, 0.385);
-    border-radius: 10px 0 0 10px;
-    border-right: none;
+    border-radius: 10px;
 }
 
 .img-container {
@@ -39,10 +35,7 @@ $parent-width: 400px;
 }
 
 /* zero upto lg */
-@media (max-width: calc(#{$breakpoint-lg} - 1px)) {
-    $parent-height: 212.5px;
-    $parent-width: 170px;
-
+@media (max-width: calc(#{$breakpoint-lg})) {
     .info-panel-container {
         max-height: 120px;
     }
