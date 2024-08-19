@@ -79,12 +79,14 @@ const LoginForm = () => {
             Login
           </button>
         </div>
-        <div
-          className="missing-fields mt-1"
-          style={{ visibility: `${isMissingVisible ? 'visible' : 'hidden'}` }}>...missing or invalid fields
-        </div>
-        {isAuthTriggered && !isAuthProcessing && !isAuthd && (
-          <div className="div-failed-login">...failed login attempt</div>
+        {isMissingVisible &&
+          <div className="missing-fields mt-1">...missing or invalid fields</div>
+        }
+        {isAuthTriggered && isAuthProcessing && (
+          <div className="div-attempt-login mt-1">...attempting to login</div>
+        )}
+        {!isMissingVisible && isAuthTriggered && !isAuthProcessing && !isAuthd && (
+          <div className="div-failed-login mt-1">...failed login attempt</div>
         )}
       </form>
     </div >
