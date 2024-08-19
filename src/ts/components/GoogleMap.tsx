@@ -3,7 +3,6 @@ import { Wrapper, Status } from "@googlemaps/react-wrapper";
 
 import "@scss/components/GoogleMap.scss";
 import MyMapComponent from "@/ts/components/MyMapComponent";
-import { useAuth } from "@context/AuthContext";
 
 // return loading or failure div
 const render = (status: Status): ReactElement => {
@@ -24,18 +23,15 @@ const mapCenter = {
 
 // set map height and width
 const GoogleMap: React.FC = () => {
-  const { isAuthd: isAuthenticated } = useAuth();
   return (
     <>
-      {isAuthenticated && (
-        <Wrapper apiKey={apiKey} render={render}>
-          <MyMapComponent
-            center={mapCenter}
-            zoom={9}
-            styles={{ width: "100%", height: "60vh" }}
-          />
-        </Wrapper>
-      )}
+      <Wrapper apiKey={apiKey} render={render}>
+        <MyMapComponent
+          center={mapCenter}
+          zoom={9}
+          styles={{ width: "100%", height: "80%" }}
+        />
+      </Wrapper>
     </>
   );
 };
