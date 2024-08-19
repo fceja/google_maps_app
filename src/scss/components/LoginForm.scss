@@ -102,16 +102,30 @@ hr {
   text-align: center;
 }
 
-.div-attempt-login {
-  color: rgba(15, 89, 179, 0.749);
-  font-size: .9em;
-  font-weight: 400;
-  text-align: center;
-}
-
 .div-failed-login {
   color: rgba(235, 65, 49, 0.669);
   font-size: .9em;
   font-weight: 400;
   text-align: center;
+}
+
+.div-attempt-login {
+  color: rgba(15, 89, 179, 0.749);
+  font-size: 0.9em;
+  font-weight: 400;
+  text-align: center;
+  opacity: 0;
+  animation: fadeInOut 1.5s linear infinite;
+}
+
+@keyframes fadeInOut {
+
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
 }
